@@ -9,6 +9,11 @@ best bid and/or best ask are at higher or lower level than our orders and consid
 Orders get posted/printed for a specified period after calibration. After the run is done results are stored in **_quotes.json_**
 and **_order-depths.json_**
 
+## Environment and Dependencies
+To import and install dependencies using Anaconda: </br>
+
+```conda env create --name gravity --file=environments.yml```
+
 ## Running the bot
 `python bot.py` </br>
 </br>
