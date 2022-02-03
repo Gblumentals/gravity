@@ -21,8 +21,8 @@ behaviour of quotes and filled orders in a jupyter notebook.
 `jupyter notebook report.ipynb` </br>
 
 Examples with previous data:
-* [Mid sample size] ()
-* [Small sample size] ()
+* [Mid sample size] (/report(1).html)
+* [Small sample size] (/report.html)
 
 ### Calibration Input
 
@@ -36,9 +36,13 @@ Examples with previous data:
 If `debug=True` in bot.py then between the calibration window and the quoting window, the depth matrix with a Gaussian 
 bell curve will be plotted in a line and scatter chart.
 
+![Gaussian Bell Curve](/order-depths.png "Gaussian Bell Curve")
+
+
 ### Approach and Notes
 
 My approach is based on finding the .75 and .25 quantile of depths at which market orders arrive and using them to make the 
 respective bid and ask spread.
 These depths could also be modelled in a Poisson process or a probability distribution for other approaches of the 
-estimation.
+estimation. Some code  inside the bot.py has another approach that I was working on where the depth matrix is modelled 
+as a Gaussian.
