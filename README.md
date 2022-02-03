@@ -36,7 +36,7 @@ Examples with previous data:
 If `debug=True` in bot.py then between the calibration window and the quoting window, the depth matrix with a Gaussian 
 bell curve will be plotted in a line and scatter chart.
 
-![Gaussian Bell Curve](/order-depths.png "Gaussian Bell Curve")
+![Gaussian Bell Curve](/gaussian.png "Gaussian Bell Curve")
 
 
 ### Approach and Notes
