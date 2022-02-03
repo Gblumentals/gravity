@@ -19,6 +19,13 @@ To import and install dependencies using Anaconda: </br>
 </br>
 The bot starts quoting after the calibration window is done. Will not print anything in between.
 
+### Config
+_**config.py**_ has properties to control the duration and debug paramaters of the algorithm 
+* _quote_interval_, how many seconds in between quotes, 
+* _calibration_window_, how long to build depth matrix for,
+* _quote_duration_, how long to run the bot,
+* _debug_, if `True` then plots debugging info between calibration and quoting;
+
 ## Testing
 Testing is done by analyzing the fill ratio of bids and asks during a run. We visualize the calibration input and 
 behaviour of quotes and filled orders in a jupyter notebook.

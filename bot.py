@@ -9,15 +9,16 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 import math
 import json
+import config
 
-debug = True
+debug = config.debug
 
 
 async def depth_matrix(
     bsm: BinanceSocketManager,
     pair: str,
     filter: Dict[str, Any],
-    calibration_window_seconds: float = +0.2 * 60,
+    calibration_window_seconds: float = +5 * 60,
 ) -> Dict[int, int]:
     """
     Populate depth matrix, storing observed depth cents from the mid price
@@ -185,9 +186,6 @@ async def get_price_filter(client: AsyncClient, pair: str):
             price_filter = f
             price_filter["tickSize"] = float(f["tickSize"])
 
-        # filter for minimal price gaps
-        if f["filterType"] == "PERCENT_PRICE":
-            print("Percent filter", f)
     return price_filter
 
 
@@ -225,7 +223,7 @@ async def main():
     price_filter = await get_price_filter(client, pair)
 
     # Read exchange websocket for ticker and trade data
-    order_depths = await depth_matrix(bsm, pair, price_filter, 10 * 60)
+    order_depths = await depth_matrix(bsm, pair, price_filter, config.calibration_window)
 
     print(order_depths)
 
@@ -240,7 +238,7 @@ async def main():
     ask_spread = math.ceil(np.quantile(depth_cents, 0.75)) * price_filter["tickSize"]
 
     # connect to websocket again to print quotes on events
-    quotes = await quote(bsm, pair, bid_spread, ask_spread, 10, 10 * 60)
+    quotes = await quote(bsm, pair, bid_spread, ask_spread, config.quote_interval, config.quote_duration)
 
     for name, d in zip(["order-depths", "quotes"], [order_depths, quotes]):
         with open(f"{name}.json", "w") as fp:
