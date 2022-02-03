@@ -12,7 +12,7 @@ and **_order-depths.json_**
 ## Environment and Dependencies
 To import and install dependencies using Anaconda: </br>
 
-```conda env create --name gravity --file=environments.yml```
+```conda env create --name gravity --file=environment.yml```
 
 ## Running the bot
 `python bot.py` </br>
@@ -26,8 +26,12 @@ behaviour of quotes and filled orders in a jupyter notebook.
 `jupyter notebook report.ipynb` </br>
 
 Examples with previous data in HTML format:
-* [Mid sample size](/report(1).html)
+* [Mid sample size](/https://github.com/Gblumentals/gravity/blob/main/report%20(1).html)
 * [Small sample size](/report.html)
+
+### Old Data
+For the simplicity of the reader old data from a previous run is kept, so the jupyter notebook can run before running
+the bot.
 
 ### Calibration Input
 X is the depth at which the orders arrive and Y is the count of occurences.
